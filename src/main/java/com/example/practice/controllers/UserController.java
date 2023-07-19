@@ -4,7 +4,6 @@ import com.example.practice.entities.ChangePasswordDto;
 import com.example.practice.entities.LoginUserDto;
 import com.example.practice.entities.RegisterUserDto;
 import com.example.practice.services.CustomUserDetailService;
-import com.example.practice.services.LogoutService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -18,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class UserController {
     private CustomUserDetailService customUserDetailService;
-    private LogoutService logoutService;
-
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody @Validated RegisterUserDto registerRequest) {
@@ -35,7 +32,4 @@ public class UserController {
     public ResponseEntity<?>changePassword(@RequestBody @Validated ChangePasswordDto passwordRequest){
         return customUserDetailService.changePassword(passwordRequest);
     }
-
-
-
 }
